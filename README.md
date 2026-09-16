@@ -1,51 +1,62 @@
 # Encryption System
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Java: 8+](https://img.shields.io/badge/Java-8%2B-orange.svg)](https://www.oracle.com/java/)
-[![Build: Maven](https://img.shields.io/badge/Build-Maven-red.svg)](https://maven.apache.org/)
+<div align="center">
+  <img src="assets/logo.png" width="160" alt="Encryption System Logo"/>
+  <br/>
+  <p><strong>Educational Desktop File Encryption & Decryption Utility</strong></p>
+  <p>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"/></a>
+    <a href="https://www.oracle.com/java/"><img src="https://img.shields.io/badge/Java-8%2B-orange.svg" alt="Java: 8+"/></a>
+    <a href="https://maven.apache.org/"><img src="https://img.shields.io/badge/Build-Maven-red.svg" alt="Build: Maven"/></a>
+    <a href="https://github.com/formdev/flatlaf"><img src="https://img.shields.io/badge/UI-FlatLaf%203.4-107C41.svg" alt="UI: FlatLaf"/></a>
+  </p>
+</div>
 
-An educational desktop file encryption and decryption application developed in Java. The project provides a graphical user interface (GUI) to transform `.txt` text files and `.java` source code files into obfuscated ciphertext and back using a byte-level shift cipher.
+An educational desktop file encryption and decryption application developed in Java. The project provides a modern graphical user interface (GUI) to transform `.txt` text files and `.java` source code files into obfuscated ciphertext and back using a byte-level shift cipher.
 
-Created by **Adarsh Aher** as a practical learning project during a Network Security course to explore fundamental concepts of cryptography, byte manipulation, and Java Swing GUI development.
-
----
-
-## Overview
-
-Encryption System demonstrates how data transformation functions at the byte level. It provides:
-- A user-friendly desktop GUI for selecting files and setting encryption keys.
-- Stream-based file transformation capable of handling arbitrary file sizes without memory exhaustion.
-- Reversible byte-shift transformation based on digit-sum key derivation.
+Created by **Adarsh Aher** as a practical learning project during a Network Security course to explore fundamental concepts of cryptography, byte manipulation, and modern Java Swing GUI development.
 
 ---
 
 ## Screenshots
 
-| Main Interface | File Selection |
+| Modern Light Interface | File Loaded & Ready |
 | :---: | :---: |
-| ![Main Interface](assets/screenshots/Encryption1.png) | ![File Selection](assets/screenshots/Encryption2.png) |
+| ![Light Mode Overview](assets/screenshots/app_overview.png) | ![File Selected](assets/screenshots/file_selected.png) |
 
-| Key Entry | Completed Encryption |
-| :---: | :---: |
-| ![Key Entry](assets/screenshots/Encryption3.png) | ![Completed Encryption](assets/screenshots/Encryption4.png) |
+<div align="center">
+  <h3>Dark Mode Theme</h3>
+  <img src="assets/screenshots/app_dark_mode.png" width="720" alt="Dark Mode Interface"/>
+</div>
+
+---
+
+## Overview
+
+Encryption System demonstrates how reversible data transformation functions at the byte level. It provides:
+- **Modern Desktop UI**: Built with FlatLaf supporting high-DPI scaling, smooth rounded cards, and instant Light/Dark mode toggling.
+- **Drag-and-Drop Workflow**: Drop target files directly into the application window or browse via native file choosers.
+- **Real-Time Key Preview**: Interactive digit-sum feedback updates automatically as you type numeric passwords.
+- **Streaming Architecture**: Low memory footprint using buffered I/O streams; handles large files seamlessly.
+- **Reversible Shift Cipher**: Byte-level Caesar transformation based on digit-sum key derivation.
 
 ---
 
 ## Features
 
-- **Intuitive GUI**: Built with Java Swing with native OS look-and-feel.
-- **File Chooser Integration**: Browse and select `.txt` documents and `.java` source files.
-- **Streaming Architecture**: Low memory footprint using buffered I/O streams; handles large files seamlessly.
-- **Digit-Sum Key Derivation**: Derives an integer shift value from user-provided numeric passwords.
-- **Safe File Saving**: Automatically manages file extensions (`.enc`, `.txt`, `.java`) and prompts before overwriting existing files.
+- **Modern FlatLaf GUI**: Clean card-based layout with rounded corners, refined typography, and instant dark/light mode toggle.
+- **Drag-and-Drop Target**: Drag `.txt` or `.java` files straight from Windows Explorer or macOS Finder into the app.
+- **File Metadata Card**: Displays file name, size, format badge (`TEXT`, `JAVA`), and path upon selection.
+- **Interactive Key Derivation**: Visual indicator previews the calculated shift key in real-time (e.g., `12345` $\rightarrow$ shift `15`).
+- **Safe File Saving**: Automatically handles extensions (`.enc`, `.txt`, `.java`) and prompts before overwriting existing files.
 - **Robust Error Handling**: Validates user inputs, reports I/O exceptions gracefully, and prevents application crashes.
 
 ---
 
 ## Technology Stack
 
-- **Language**: Java (JDK 8 or higher)
-- **GUI Framework**: Java Swing (`javax.swing`, `java.awt`)
+- **Language**: Java (JDK 8 or higher, tested on OpenJDK 17)
+- **GUI Framework**: Java Swing with [FlatLaf](https://www.formdev.com/flatlaf/) modern look-and-feel
 - **Build Tool**: Apache Maven
 - **Test Framework**: JUnit 5 Jupiter (`org.junit.jupiter`)
 
@@ -55,7 +66,7 @@ Encryption System demonstrates how data transformation functions at the byte lev
 
 ```mermaid
 flowchart TD
-    A[User Selects File] --> B[File Validation]
+    A[User Drops / Selects File] --> B[File Validation]
     B --> C[User Enters Numeric Key]
     C --> D[KeyDerivation: Digit-Sum Calculation]
     D --> E{Operation}
@@ -67,11 +78,11 @@ flowchart TD
 ```
 
 ### Component Breakdown
-- `io.github.adarshh025.encryptionsystem.Main`: Application entry point; initializes native Look-and-Feel and launches UI.
+- `io.github.adarshh025.encryptionsystem.Main`: Application entry point; initializes FlatLaf modern theme and launches UI.
 - `io.github.adarshh025.encryptionsystem.core.CipherEngine`: Contract defining streaming and in-memory encryption/decryption.
-- `io.github.adarshh025.encryptionsystem.core.ShiftCipherEngine`: Core byte-shift transformation engine.
+- `io.github.adarshh025.encryptionsystem.core.ShiftCipherEngine`: Core streaming byte-shift transformation engine.
 - `io.github.adarshh025.encryptionsystem.core.KeyDerivation`: Input validation and base-10 digit-sum key calculation.
-- `io.github.adarshh025.encryptionsystem.ui.CryptographyFrame`: Swing window handling user interactions, dialogs, and progress states.
+- `io.github.adarshh025.encryptionsystem.ui.CryptographyFrame`: Modern Swing window handling drag-and-drop, theme switching, dialogs, and progress states.
 - `io.github.adarshh025.encryptionsystem.ui.FileFilters`: File selection filters for text and Java files.
 
 ---
@@ -129,7 +140,7 @@ cd encryption-project
 mvn clean package
 ```
 
-This compiles all classes, runs the test suite, and packages an executable JAR into `target/encryption-system-1.0.0.jar`.
+This compiles all classes, runs the automated test suite, and packages a standalone executable JAR into `target/encryption-system-1.0.0.jar`.
 
 ---
 
@@ -180,13 +191,11 @@ encryption-project/
 ├── README.md                           # Project documentation
 ├── pom.xml                             # Maven project configuration
 ├── assets/
-│   └── screenshots/                    # UI walkthrough screenshots
-│       ├── Encryption1.png
-│       ├── Encryption2.png
-│       ├── Encryption3.png
-│       ├── Encryption4.png
-│       ├── Encryption5.png
-│       └── Encryption6.png
+│   ├── logo.png                        # Brand logo emblem
+│   └── screenshots/                    # High-resolution screenshots
+│       ├── app_overview.png
+│       ├── file_selected.png
+│       └── app_dark_mode.png
 └── src/
     ├── main/
     │   ├── java/
@@ -197,15 +206,15 @@ encryption-project/
     │   │       │   ├── KeyDerivation.java      # Key parser & digit sum
     │   │       │   └── ShiftCipherEngine.java  # Streaming Caesar cipher
     │   │       └── ui/
-    │   │           ├── CryptographyFrame.java  # Swing interface
+    │   │           ├── CryptographyFrame.java  # Modern FlatLaf GUI
     │   │           └── FileFilters.java        # JFileChooser filters
     │   └── resources/
     │       └── io/github/adarshh025/encryptionsystem/
-    │           ├── logo.GIF            # UI brand image
-    │           └── wait.GIF            # UI loading animation
+    │           └── logo.png            # Application icon / brand asset
     └── test/
         └── java/
             └── io/github/adarshh025/encryptionsystem/
+                ├── CaptureScreenshots.java     # Screenshot capture utility
                 ├── KeyDerivationTest.java      # Key derivation tests
                 └── ShiftCipherEngineTest.java  # Cipher roundtrip & edge tests
 ```
@@ -216,7 +225,6 @@ encryption-project/
 
 - [ ] Add modern authenticated encryption mode (AES-256-GCM with PBKDF2 key derivation).
 - [ ] Add CLI mode for headless terminal encryption (`encrypt -f input.txt -k 12345 -o output.enc`).
-- [ ] Add drag-and-drop file support to the GUI.
 - [ ] Support folder/batch file encryption.
 
 ---

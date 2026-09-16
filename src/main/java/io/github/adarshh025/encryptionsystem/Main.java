@@ -5,7 +5,9 @@
  */
 package io.github.adarshh025.encryptionsystem;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import io.github.adarshh025.encryptionsystem.ui.CryptographyFrame;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -27,7 +29,7 @@ public class Main {
             } else if (flag.equals("--help") || flag.equals("-h")) {
                 System.out.println(APP_NAME + " v" + APP_VERSION);
                 System.out.println("Author: " + APP_AUTHOR);
-                System.out.println("Usage: java -jar encryption-system.jar [options]");
+                System.out.println("Usage: java -jar encryption-system-1.0.0.jar [options]");
                 System.out.println("Options:");
                 System.out.println("  -v, --version    Display application version");
                 System.out.println("  -h, --help       Display this help message");
@@ -35,11 +37,15 @@ public class Main {
             }
         }
 
-        // Apply native platform look-and-feel
+        // Initialize modern FlatLaf theme
         try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            FlatLightLaf.setup();
         } catch (Exception ignored) {
-            // Fallback gracefully to default Swing Look and Feel
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ignored2) {
+                // Fallback to default
+            }
         }
 
         SwingUtilities.invokeLater(() -> {
